@@ -3,10 +3,10 @@
 // tslint:disable
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
-import { CarTypeService } from "./CarTypeService";
+import { CarTypeService } from "./CarTypeService.ts";
 import { stackIntercept } from "@protobuf-ts/runtime-rpc";
-import type { CarTypeResponse } from "./CarTypeService";
-import type { CarTypeRequest } from "./CarTypeService";
+import type { CarTypeResponse } from "./CarTypeService.ts";
+import type { CarTypeRequest } from "./CarTypeService.ts";
 import type { UnaryCall } from "@protobuf-ts/runtime-rpc";
 import type { RpcOptions } from "@protobuf-ts/runtime-rpc";
 /**

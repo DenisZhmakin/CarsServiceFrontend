@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import HomePage from "./pages/HomePage/HomePage.tsx";
+import addNewCarType from "./api/addNewCarType.ts";
 
 const router = createBrowserRouter(
     [
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
     ]
 )
 
+addNewCarType({value: "Личный автомобиль"}).then(res => console.log(res));
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
