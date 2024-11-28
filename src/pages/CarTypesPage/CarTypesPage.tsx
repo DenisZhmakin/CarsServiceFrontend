@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
 import getAllCarTypes from "../../api/getAllCarTypes.ts";
+import addNewCarType from "../../api/addNewCarType.ts";
 import {CarTypeResponse} from "../../api/libs/CarTypeService.ts";
 import Header from "../../components/Header/Header.tsx";
-
-
 import 'bootstrap/dist/js/bootstrap.esm.min.js';
-import addNewCarType from "../../api/addNewCarType.ts";
+
 
 export default function CarTypesPage() {
     const [inputValue, setInputValue] = useState<string>("");
@@ -90,7 +89,8 @@ export default function CarTypesPage() {
                                     onClick={saveButtonOnClickHandle}>
                                 Сохранить
                             </button>
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
+                                onClick={() => {setInputValue("")}}>
                                 Закрыть
                             </button>
                         </div>
