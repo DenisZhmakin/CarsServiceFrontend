@@ -3,10 +3,12 @@
 // tslint:disable
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
-import { CarTypeService } from "./CarTypeService.ts";
+import { CarTypeService } from "./CarTypeService";
+import type { ListCarTypeResponse } from "./CarTypeService";
+import type { CarTypeEmptyRequest } from "./CarTypeService";
 import { stackIntercept } from "@protobuf-ts/runtime-rpc";
-import type { CarTypeResponse } from "./CarTypeService.ts";
-import type { CarTypeRequest } from "./CarTypeService.ts";
+import type { CarTypeResponse } from "./CarTypeService";
+import type { CarTypeRequest } from "./CarTypeService";
 import type { UnaryCall } from "@protobuf-ts/runtime-rpc";
 import type { RpcOptions } from "@protobuf-ts/runtime-rpc";
 /**
@@ -17,6 +19,10 @@ export interface ICarTypeServiceClient {
      * @generated from protobuf rpc: AddNewCarType(CarTypeRequest) returns (CarTypeResponse);
      */
     addNewCarType(input: CarTypeRequest, options?: RpcOptions): UnaryCall<CarTypeRequest, CarTypeResponse>;
+    /**
+     * @generated from protobuf rpc: GetAllCarTypes(CarTypeEmptyRequest) returns (ListCarTypeResponse);
+     */
+    getAllCarTypes(input: CarTypeEmptyRequest, options?: RpcOptions): UnaryCall<CarTypeEmptyRequest, ListCarTypeResponse>;
 }
 /**
  * @generated from protobuf service CarTypeService
@@ -33,5 +39,12 @@ export class CarTypeServiceClient implements ICarTypeServiceClient, ServiceInfo 
     addNewCarType(input: CarTypeRequest, options?: RpcOptions): UnaryCall<CarTypeRequest, CarTypeResponse> {
         const method = this.methods[0], opt = this._transport.mergeOptions(options);
         return stackIntercept<CarTypeRequest, CarTypeResponse>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: GetAllCarTypes(CarTypeEmptyRequest) returns (ListCarTypeResponse);
+     */
+    getAllCarTypes(input: CarTypeEmptyRequest, options?: RpcOptions): UnaryCall<CarTypeEmptyRequest, ListCarTypeResponse> {
+        const method = this.methods[1], opt = this._transport.mergeOptions(options);
+        return stackIntercept<CarTypeEmptyRequest, ListCarTypeResponse>("unary", this._transport, method, opt, input);
     }
 }

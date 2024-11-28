@@ -1,8 +1,20 @@
 import Header from "../../components/Header/Header.tsx";
+import {useEffect, useState} from "react";
+import getAllCarTypes from "../../api/getAllCarTypes.ts";
+import {CarTypeResponse} from "../../api/libs/CarTypeService.ts";
 
 export default function CarTypesPage() {
     // import addNewCarType from "./api/addNewCarType.ts";
     // addNewCarType({value: "Личный автомобиль"}).then(res => console.log(res));
+    const [carTypeResponseList, setCarTypeResponseList] = useState<CarTypeResponse[]>([]);
+
+    useEffect(() => {
+        const fetchCarTypes = async () => {
+            const carTypes = await getAllCarTypes();
+            setCarTypeResponseList(carTypes.carTypes)
+        }
+        fetchCarTypes();
+    }, [])
 
     return (
         <div className="d-flex flex-column vh-100">
@@ -21,19 +33,17 @@ export default function CarTypesPage() {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                    </tr>
+                    {carTypeResponseList.map(
+                        (item, index) => (
+                            <tr data-key={item.id} key={item.id}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{item.value}</td>
+                            </tr>
+                        ))
+                    }
                     </tbody>
                 </table>
             </div>
-
-
         </div>
     )
 }

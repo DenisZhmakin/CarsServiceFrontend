@@ -2,15 +2,19 @@
 // @generated from protobuf file "CarTypeService.proto" (syntax proto3)
 // tslint:disable
 import { ServiceType } from "@protobuf-ts/runtime-rpc";
+import { WireType } from "@protobuf-ts/runtime";
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
+import { UnknownFieldHandler } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
 import type { IBinaryReader } from "@protobuf-ts/runtime";
-import { UnknownFieldHandler } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MessageType } from "@protobuf-ts/runtime";
+/**
+ * @generated from protobuf message CarTypeEmptyRequest
+ */
+export type CarTypeEmptyRequest = object
 /**
  * @generated from protobuf message CarTypeRequest
  */
@@ -33,6 +37,40 @@ export interface CarTypeResponse {
      */
     value: string;
 }
+/**
+ * @generated from protobuf message ListCarTypeResponse
+ */
+export interface ListCarTypeResponse {
+    /**
+     * @generated from protobuf field: repeated CarTypeResponse carTypes = 1;
+     */
+    carTypes: CarTypeResponse[];
+}
+// @generated message type with reflection information, may provide speed optimized methods
+class CarTypeEmptyRequest$Type extends MessageType<CarTypeEmptyRequest> {
+    constructor() {
+        super("CarTypeEmptyRequest", []);
+    }
+    create(value?: PartialMessage<CarTypeEmptyRequest>): CarTypeEmptyRequest {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        if (value !== undefined)
+            reflectionMergePartial<CarTypeEmptyRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(_reader: IBinaryReader, _length: number, _options: BinaryReadOptions, target?: CarTypeEmptyRequest): CarTypeEmptyRequest {
+        return target ?? this.create();
+    }
+    internalBinaryWrite(message: CarTypeEmptyRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        const u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message CarTypeEmptyRequest
+ */
+export const CarTypeEmptyRequest = new CarTypeEmptyRequest$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class CarTypeRequest$Type extends MessageType<CarTypeRequest> {
     constructor() {
@@ -48,20 +86,21 @@ class CarTypeRequest$Type extends MessageType<CarTypeRequest> {
         return message;
     }
     internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CarTypeRequest): CarTypeRequest {
+        // eslint-disable-next-line prefer-const
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
-            let [fieldNo, wireType] = reader.tag();
+            const [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* string value */ 1:
                     message.value = reader.string();
                     break;
                 default:
-                    let u = options.readUnknownField;
+                    { const u = options.readUnknownField;
                     if (u === "throw")
                         throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
-                    let d = reader.skip(wireType);
+                    const d = reader.skip(wireType);
                     if (u !== false)
-                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d); }
             }
         }
         return message;
@@ -70,7 +109,7 @@ class CarTypeRequest$Type extends MessageType<CarTypeRequest> {
         /* string value = 1; */
         if (message.value !== "")
             writer.tag(1, WireType.LengthDelimited).string(message.value);
-        let u = options.writeUnknownFields;
+        const u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
         return writer;
@@ -97,9 +136,10 @@ class CarTypeResponse$Type extends MessageType<CarTypeResponse> {
         return message;
     }
     internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CarTypeResponse): CarTypeResponse {
+        // eslint-disable-next-line prefer-const
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
-            let [fieldNo, wireType] = reader.tag();
+            const [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
                 case /* int64 id */ 1:
                     message.id = reader.int64().toBigInt();
@@ -108,12 +148,12 @@ class CarTypeResponse$Type extends MessageType<CarTypeResponse> {
                     message.value = reader.string();
                     break;
                 default:
-                    let u = options.readUnknownField;
+                    { const u = options.readUnknownField;
                     if (u === "throw")
                         throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
-                    let d = reader.skip(wireType);
+                    const d = reader.skip(wireType);
                     if (u !== false)
-                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d); }
             }
         }
         return message;
@@ -125,7 +165,7 @@ class CarTypeResponse$Type extends MessageType<CarTypeResponse> {
         /* string value = 2; */
         if (message.value !== "")
             writer.tag(2, WireType.LengthDelimited).string(message.value);
-        let u = options.writeUnknownFields;
+        const u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
         return writer;
@@ -135,9 +175,58 @@ class CarTypeResponse$Type extends MessageType<CarTypeResponse> {
  * @generated MessageType for protobuf message CarTypeResponse
  */
 export const CarTypeResponse = new CarTypeResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class ListCarTypeResponse$Type extends MessageType<ListCarTypeResponse> {
+    constructor() {
+        super("ListCarTypeResponse", [
+            { no: 1, name: "carTypes", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => CarTypeResponse }
+        ]);
+    }
+    create(value?: PartialMessage<ListCarTypeResponse>): ListCarTypeResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.carTypes = [];
+        if (value !== undefined)
+            reflectionMergePartial<ListCarTypeResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: ListCarTypeResponse): ListCarTypeResponse {
+        // eslint-disable-next-line prefer-const
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            const [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated CarTypeResponse carTypes */ 1:
+                    message.carTypes.push(CarTypeResponse.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                default:
+                    { const u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    const d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d); }
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: ListCarTypeResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated CarTypeResponse carTypes = 1; */
+        for (let i = 0; i < message.carTypes.length; i++)
+            CarTypeResponse.internalBinaryWrite(message.carTypes[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        const u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message ListCarTypeResponse
+ */
+export const ListCarTypeResponse = new ListCarTypeResponse$Type();
 /**
  * @generated ServiceType for protobuf service CarTypeService
  */
 export const CarTypeService = new ServiceType("CarTypeService", [
-    { name: "AddNewCarType", options: {}, I: CarTypeRequest, O: CarTypeResponse }
+    { name: "AddNewCarType", options: {}, I: CarTypeRequest, O: CarTypeResponse },
+    { name: "GetAllCarTypes", options: {}, I: CarTypeEmptyRequest, O: ListCarTypeResponse }
 ]);
