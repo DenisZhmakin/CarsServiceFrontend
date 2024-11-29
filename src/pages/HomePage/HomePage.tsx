@@ -57,11 +57,24 @@ export default function HomePage() {
         event.preventDefault()
 
         const carSelect = document.getElementById("carSelect") as HTMLSelectElement;
-        const carStatusEvents= await getAllCarStatusEventsByCarId({carId: BigInt(carSelect.value)})
+        const carStatusEvents = await getAllCarStatusEventsByCarId({carId: BigInt(carSelect.value)})
 
-        console.log(carStatusEvents)
+        const timeFrom = document.getElementById("timeFrom") as HTMLInputElement;
+        const timeTo = document.getElementById("timeTo") as HTMLInputElement;
 
-        setCarStatusEvents(carStatusEvents)
+        if (timeFrom?.value !== "" && timeTo?.value !== "") {
+            const result: CarStatusEventsResponse[] = [];
+            for (const carStatusEvent of carStatusEvents) {
+                if (new Date(carStatusEvent.timeOfRegistration) > new Date(timeFrom.value)
+                    && new Date(carStatusEvent.timeOfRegistration) < new Date(timeTo.value)) {
+                    result.push(carStatusEvent);
+                }
+            }
+
+            setCarStatusEvents(result)
+        } else {
+            setCarStatusEvents(carStatusEvents)
+        }
     }
 
     const carTypeSelectOnChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -106,7 +119,7 @@ export default function HomePage() {
                 <div className="d-flex flex-column w-25" style={{backgroundColor: "lightgray"}}>
                     <div className="mt-3 mx-3">
                         <button type="button" className="btn btn-primary w-100"
-                            data-bs-toggle="modal" data-bs-target="#addNewCarStatusModal">
+                                data-bs-toggle="modal" data-bs-target="#addNewCarStatusModal">
                             Добавить новое событие
                         </button>
                     </div>
@@ -132,13 +145,26 @@ export default function HomePage() {
                             ))}
                         </select>
                     </div>
+                    <div className="mx-3">
+                        <label className="form-label mt-2" htmlFor="timeFrom">
+                            Выбрать промежуток от
+                        </label>
+                        <input className="form-control" type="datetime-local" id="timeFrom"/>
+                    </div>
+                    <div className="mx-3">
+                        <label className="form-label mt-2" htmlFor="timeTo">
+                            Выбрать промежуток до
+                        </label>
+                        <input className="form-control" type="datetime-local" id="timeTo"/>
+                    </div>
                     <div className="mt-3 mx-3">
                         <button type="button" className="btn btn-success w-100"
                                 onClick={loadEventsOnClickHandle}>
                             Загрузить события для автомобиля
                         </button>
                     </div>
-                    <div className="modal fade" id="addNewCarStatusModal" aria-labelledby="addNewCarStatusModalLabel"
+                    <div className="modal fade" id="addNewCarStatusModal"
+                         aria-labelledby="addNewCarStatusModalLabel"
                          aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered">
                             <div className="modal-content">
@@ -179,7 +205,7 @@ export default function HomePage() {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-success" data-bs-dismiss="modal"
-                                        onClick={saveButtonOnClickHandle}>
+                                            onClick={saveButtonOnClickHandle}>
                                         Сохранить
                                     </button>
                                     <button type="button" className="btn btn-primary" data-bs-dismiss="modal">
