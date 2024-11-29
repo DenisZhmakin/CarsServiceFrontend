@@ -5,7 +5,6 @@ import getAllCarTypes from "../../api/getAllCarTypes.ts";
 import getAllCars from "../../api/getAllCars.ts";
 import addNewCar from "../../api/addNewCar.ts";
 import Header from "../../components/Header/Header.tsx";
-import 'bootstrap/dist/js/bootstrap.esm.min.js';
 
 
 export default function CarListPage() {

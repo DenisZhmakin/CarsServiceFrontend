@@ -7,6 +7,9 @@ import CarListPage from "./pages/CarListPage/CarListPage.tsx";
 import CarStatusesPage from "./pages/CarStatusesPage/CarStatusesPage.tsx";
 import CarTypesPage from "./pages/CarTypesPage/CarTypesPage.tsx";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.esm.min.js';
+
 const router = createBrowserRouter(
     [
         {

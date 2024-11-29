@@ -6,8 +6,6 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps) {
-    console.log(props.selectedIndex);
-
     return (
         <header className="d-flex justify-content-center bg-dark py-3">
             <ul className="nav nav-pills">
